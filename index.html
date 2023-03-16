@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Microsoft Login Example</title>
+    <script src="https://unpkg.com/msal@2.0.0-beta.1/dist/msal.min.js"></script>
+  </head>
+  <body>
+    <h1>Microsoft Login Example</h1>
+    <button id="loginButton">Login with Microsoft</button>
+    <script>
+      // Initialize the MSAL library with your app's Client ID and redirect URI
+      const msalConfig = {
+        auth: {
+          clientId: 'YOUR_CLIENT_ID',
+          redirectUri: 'YOUR_REDIRECT_URI'
+        }
+      };
+      const msalInstance = new msal.PublicClientApplication(msalConfig);
+
+      // Define the scopes that your app needs to access Microsoft Graph APIs or other resources
+      const loginRequest = {
+        scopes: ['user.read']
+      };
+
+      // Add a click event listener to the login button
+      const loginButton = document.getElementById('loginButton');
+      loginButton.addEventListener('click', () => {
+        // Use the MSAL library to initiate the authentication process
+        msalInstance.loginPopup(loginRequest)
+          .then((response) => {
+            // Use the access token to authenticate the user and access their Microsoft profile information or other resources
+            console.log('Access token:', response.accessToken);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Microsoft Login Example</title>
+    <title>Microsoft Login</title>
     <script src="https://unpkg.com/msal@2.0.0-beta.1/dist/msal.min.js"></script>
   </head>
   <body>
@@ -10,7 +10,8 @@
       // Initialize the MSAL library with your app's Client ID and redirect URI
       const msalConfig = {
         auth: {
-          clientId: 'fb0388e3-23c8-4f24-90d5-5d4e5c067f6c'
+          clientId: 'fb0388e3-23c8-4f24-90d5-5d4e5c067f6c',
+          redirectUri: 'https://kishan555.github.io/Microsoft-login/'
         }
       };
       const msalInstance = new msal.PublicClientApplication(msalConfig);
